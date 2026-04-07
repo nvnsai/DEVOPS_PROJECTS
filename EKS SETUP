@@ -1,0 +1,24 @@
+### CREATE CLUSTER IN CLI WITH FARGATE###
+eksctl create cluster --name demo-cluster --region us-east-1 --fargate
+
+##### Configuring kubectl for EKS ####
+Once kubectl is installed, you need to configure it to work with your EKS cluster.
+
+aws eks update-kubeconfig --name your-cluster-name
+
+### CREATE FARGATE PROFILE ###
+
+eksctl create fargateprofile \
+    --cluster demo-cluster \
+    --region us-east-1 \
+    --name alb-sample-app \
+    --namespace game-2048
+
+### Deploy the deployment, service and Ingress ###
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/examples/2048/2048_full.yaml
+
+### CHECK PODS AND SVC,INGRESS ###
+kubectl get pods -n game-2048
+kubectl get svc -n game-2048
+kubectl get ingress -n game-2048
+
