@@ -56,7 +56,7 @@ IF THE APPLICATION IS NOT APPEARING IN BROWSER STEPS TO CHECK
 
 6) REATTACH THE POLICY AND RECREATE THE ROLE
 7) RESTART THE CONTROLLER
-    kubectl rollout restart deployment aws-load-balancer-controller -n kube-system
+    "kubectl rollout restart deployment aws-load-balancer-controller -n kube-system"
 
 8) TAKES TIME TO CHECK THE INGRESS CONTROLER EXTERNAL IP 
 
